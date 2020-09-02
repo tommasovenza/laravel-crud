@@ -15,8 +15,8 @@ class MovieController extends Controller
     public function index()
     {
       $movies = Movie::all();
-      dd($movies);
-
+      
+      return view('movies', compact('movies'));  
     }
 
     /**
@@ -47,19 +47,25 @@ class MovieController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
+
     {
-        //
+        // mostra le informazioni di una singola istanza in base all'id
+        // con questo id che ci facciamo? lo utilizziamo per identificare la risorsa.
+
+        $movie = Movie::find($id);
+
+        return view('show', compact('movie'));
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
+     * 
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        //  
     }
 
     /**
